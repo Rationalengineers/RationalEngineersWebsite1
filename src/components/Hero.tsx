@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-copper-wires.jpg";
 import copperFlowImage from "@/assets/hero-copper-flow.jpg";
 import copperFlowVideoAsset from "@/assets/hero-copper-winding-only.mp4.asset.json";
+import watermarkAsset from "@/assets/rational-r-watermark.png.asset.json";
 import { assetUrl } from "@/lib/assetUrl";
 
 const copperFlowVideo = assetUrl(copperFlowVideoAsset);
+const watermark = assetUrl(watermarkAsset);
 
 const slides = [
   {
@@ -101,6 +103,13 @@ const Hero = () => {
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/70 to-foreground/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-transparent to-foreground/50" />
+
+      <img
+        src={watermark}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-20 right-[-4rem] z-[1] h-[58%] max-h-[640px] w-auto select-none object-contain opacity-[0.14] md:-bottom-28 md:right-[3%] md:h-[78%]"
+      />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto w-full px-6 pb-20 pt-48 md:pb-24 md:pt-60 lg:pt-64">
