@@ -108,7 +108,7 @@ const Hero = () => {
         src={watermark}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-20 right-[-4rem] z-[1] h-[58%] max-h-[640px] w-auto select-none object-contain opacity-[0.14] md:-bottom-28 md:right-[3%] md:h-[78%]"
+        className="pointer-events-none absolute -bottom-16 right-[-2rem] z-[1] h-[40%] max-h-[480px] w-auto select-none object-contain opacity-[0.07] md:-bottom-20 md:right-[2%] md:h-[52%]"
       />
 
       {/* Content */}
