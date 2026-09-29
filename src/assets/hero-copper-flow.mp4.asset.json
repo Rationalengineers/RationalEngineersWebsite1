@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "asset_id": "0972b146-0dab-40da-a10d-f62e6e946e5c",
+  "asset_id": "e8a48ef8-9752-4325-9220-f5b78309f1d4",
   "project_id": "41f02ccf-213e-4baa-9d46-d39b87a7eb41",
-  "url": "/__l5e/assets-v1/0972b146-0dab-40da-a10d-f62e6e946e5c/hero-copper-flow.mp4",
+  "url": "/__l5e/assets-v1/e8a48ef8-9752-4325-9220-f5b78309f1d4/hero-copper-flow.mp4",
+  "r2_key": "a/v1/41f02ccf-213e-4baa-9d46-d39b87a7eb41/e8a48ef8-9752-4325-9220-f5b78309f1d4/hero-copper-flow.mp4",
   "original_filename": "hero-copper-flow.mp4",
-  "size": 8450324,
-  "created_at": "2026-09-09T04:41:00Z"
+  "size": 818793,
+  "content_type": "video/mp4",
+  "created_at": "2026-09-29T12:22:02Z"
 }
