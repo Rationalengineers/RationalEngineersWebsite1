@@ -39,12 +39,14 @@ const Hero = () => {
 
   useEffect(() => {
     if (isPaused || reduceMotion) return;
-    const timer = window.setInterval(
+    // Video slide is trimmed to 3s — advance as soon as it finishes.
+    const duration = slides[activeSlide].video ? 3200 : 7000;
+    const timer = window.setTimeout(
       () => setActiveSlide((current) => (current + 1) % slides.length),
-      7000,
+      duration,
     );
-    return () => window.clearInterval(timer);
-  }, [isPaused, reduceMotion]);
+    return () => window.clearTimeout(timer);
+  }, [isPaused, reduceMotion, activeSlide]);
 
   const slide = slides[activeSlide];
 
