@@ -5,18 +5,16 @@ import QuoteDialog from "@/components/QuoteDialog";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-copper-wires.jpg";
 import copperFlowImage from "@/assets/hero-copper-flow.jpg";
-import copperFlowVideoAsset from "@/assets/hero-copper-winding-only.mp4.asset.json";
-import watermarkAsset from "@/assets/rational-r-watermark.png.asset.json";
+import copperFlowVideoAsset from "@/assets/hero-copper-flow.mp4.asset.json";
 import { assetUrl } from "@/lib/assetUrl";
 
 const copperFlowVideo = assetUrl(copperFlowVideoAsset);
-const watermark = assetUrl(watermarkAsset);
 
 const slides = [
   {
     image: copperFlowImage,
     video: copperFlowVideo,
-    alt: "Copper wire being wound in even layers onto an industrial rotating spool",
+    alt: "Copper rods and conductor coils flowing through the Rational Engineers production line",
     eyebrow: "Precision in Every Conductor",
     title: "From Copper Rod to Performance",
     description:
@@ -103,13 +101,6 @@ const Hero = () => {
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/70 to-foreground/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-transparent to-foreground/50" />
-
-      <img
-        src={watermark}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 z-[1] h-[33%] max-h-[420px] w-auto select-none object-contain opacity-[0.10] md:right-[1.5%] md:h-[34%]"
-      />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto w-full px-6 pb-20 pt-48 md:pb-24 md:pt-60 lg:pt-64">
