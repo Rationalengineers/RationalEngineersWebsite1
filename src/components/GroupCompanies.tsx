@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import SmartLink from "@/components/SmartLink";
+
+export const REL_METALS_URL = "https://www.relemetals.com";
 
 const GroupCompanies = () => {
   return (
@@ -44,7 +45,16 @@ const GroupCompanies = () => {
                   <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/50">
                     Entity
                   </dt>
-                  <dd className="mt-2 text-sm text-background">REL METALS TRADING LLC, UAE</dd>
+                  <dd className="mt-2 text-sm">
+                    <a
+                      href={REL_METALS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-background underline-offset-4 transition-colors duration-300 hover:text-rational-red hover:underline"
+                    >
+                      REL METALS TRADING LLC, UAE
+                    </a>
+                  </dd>
                 </div>
                 <div className="bg-foreground p-6">
                   <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/50">
@@ -54,13 +64,15 @@ const GroupCompanies = () => {
                 </div>
               </dl>
 
-              <SmartLink
-                href="/contact"
+              <a
+                href={REL_METALS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group mt-8 inline-flex w-fit items-center gap-3 border-2 border-background px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.2em] text-background transition-colors duration-300 hover:border-rational-red hover:bg-rational-red hover:text-white"
               >
-                Contact REL Metals Trading
+                Visit relmetals.com
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </SmartLink>
+              </a>
             </div>
           </div>
         </div>

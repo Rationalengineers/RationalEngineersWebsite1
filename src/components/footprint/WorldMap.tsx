@@ -5,6 +5,8 @@ export type FootprintPin = {
   id: string;
   label: string;
   sub?: string;
+  /** Optional external website the pin label links to */
+  link?: string;
   /** [longitude, latitude] */
   coords: [number, number];
   kind: "manufacturing" | "presence";
@@ -27,6 +29,7 @@ export const pins: FootprintPin[] = [
     id: "dubai",
     label: "REL METALS TRADING LLC",
     sub: "UAE",
+    link: "https://www.relemetals.com",
     coords: [55, 25],
     kind: "presence",
     labelOffset: [-130, -6],
@@ -151,14 +154,24 @@ const WorldMap = ({ activeId, onHover }: Props) => {
               </g>
 
               {/* label */}
-              <text
-                x={pin.labelAlign === "end" ? lx - 14 : lx + 14}
-                y={ly - 6}
-                textAnchor={pin.labelAlign === "end" ? "end" : "start"}
-                className={`hidden fill-foreground text-[15px] font-bold uppercase tracking-[0.08em] sm:block`}
+              <a
+                href={pin.link}
+                target={pin.link ? "_blank" : undefined}
+                rel={pin.link ? "noopener noreferrer" : undefined}
+                className={pin.link ? "cursor-pointer" : undefined}
+                aria-label={pin.link ? `${pin.label} — visit website` : undefined}
               >
-                {pin.label}
-              </text>
+                <text
+                  x={pin.labelAlign === "end" ? lx - 14 : lx + 14}
+                  y={ly - 6}
+                  textAnchor={pin.labelAlign === "end" ? "end" : "start"}
+                  className={`hidden fill-foreground text-[15px] font-bold uppercase tracking-[0.08em] transition-colors sm:block ${
+                    pin.link ? "hover:fill-rational-red" : ""
+                  }`}
+                >
+                  {pin.label}
+                </text>
+              </a>
               <text
                 x={pin.labelAlign === "end" ? lx - 14 : lx + 14}
                 y={ly + 14}

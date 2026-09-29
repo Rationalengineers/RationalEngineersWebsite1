@@ -23,6 +23,7 @@ const locations = [
     title: "REL METALS TRADING LLC, UAE",
     label: "Global Trade & Distribution Hub",
     desc: "International trade arm driving distribution across the Middle East, Africa and emerging markets worldwide.",
+    link: "https://www.relemetals.com",
   },
 ];
 
@@ -76,7 +77,18 @@ const GlobalFootprint = () => {
                 </span>
                 <div>
                   <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-foreground">
-                    {l.title}
+                    {l.link ? (
+                      <a
+                        href={l.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline-offset-4 transition-colors duration-300 hover:text-primary hover:underline"
+                      >
+                        {l.title}
+                      </a>
+                    ) : (
+                      l.title
+                    )}
                   </h3>
                   <p className="mt-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
                     {l.label}
