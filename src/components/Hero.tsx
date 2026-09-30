@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import QuoteDialog from "@/components/QuoteDialog";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-copper-wires.jpg";
 import copperFlowImage from "@/assets/hero-copper-flow.jpg";
-import copperFlowVideoAsset from "@/assets/hero-copper-seamless.mp4.asset.json";
+import copperFlowVideoAsset from "@/assets/hero-copper-flow.mp4.asset.json";
 import { assetUrl } from "@/lib/assetUrl";
 
 const copperFlowVideo = assetUrl(copperFlowVideoAsset);
@@ -35,36 +35,18 @@ const Hero = () => {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isVideoEnding, setIsVideoEnding] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (isPaused || reduceMotion) return;
-    // The motion resolves into the exact next banner image before its copy changes.
-    const duration = slides[activeSlide].video ? 7100 : 7000;
+    // Video slide is trimmed to 3s — advance as soon as it finishes.
+    const duration = slides[activeSlide].video ? 3200 : 7000;
     const timer = window.setTimeout(
       () => setActiveSlide((current) => (current + 1) % slides.length),
       duration,
     );
     return () => window.clearTimeout(timer);
   }, [isPaused, reduceMotion, activeSlide]);
-
-  useEffect(() => {
-    setIsVideoEnding(false);
-  }, [activeSlide]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || activeSlide !== 0) return;
-
-    if (isPaused) {
-      video.pause();
-      return;
-    }
-
-    void video.play().catch(() => undefined);
-  }, [activeSlide, isPaused]);
 
   const slide = slides[activeSlide];
 
@@ -88,26 +70,16 @@ const Hero = () => {
             exit={{ opacity: 0 }}
             transition={{ opacity: { duration: 0.8 } }}
           >
-            <img
-              src={heroImage}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
             <video
-              ref={videoRef}
-              className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${isVideoEnding ? "opacity-0" : "opacity-100"}`}
+              className="pointer-events-none h-full w-full object-cover"
               src={slide.video}
               poster={slide.image}
               autoPlay
               muted
+              loop
               playsInline
               preload="auto"
               aria-label={slide.alt}
-              onTimeUpdate={(event) => {
-                if (event.currentTarget.currentTime >= 6) setIsVideoEnding(true);
-              }}
-              onEnded={() => setActiveSlide(1)}
             />
           </motion.div>
         ) : (
