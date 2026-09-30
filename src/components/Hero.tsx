@@ -39,8 +39,8 @@ const Hero = () => {
 
   useEffect(() => {
     if (isPaused || reduceMotion) return;
-    // Video slide is trimmed to 3s — advance as soon as it finishes.
-    const duration = slides[activeSlide].video ? 3200 : 7000;
+    // Video slide is slowed to 0.6x — a 3s clip now plays over ~5s before advancing.
+    const duration = slides[activeSlide].video ? 5200 : 7000;
     const timer = window.setTimeout(
       () => setActiveSlide((current) => (current + 1) % slides.length),
       duration,
@@ -68,15 +68,17 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ opacity: { duration: 0.8 } }}
+            transition={{ opacity: { duration: 1.4 } }}
           >
             <video
+              ref={(el) => {
+                if (el) el.playbackRate = 0.6;
+              }}
               className="pointer-events-none h-full w-full object-cover"
               src={slide.video}
               poster={slide.image}
               autoPlay
               muted
-              loop
               playsInline
               preload="auto"
               aria-label={slide.alt}
