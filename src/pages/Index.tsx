@@ -51,14 +51,14 @@ const Index = () => {
       <Navigation />
       <Hero />
 
-      <ScrollReveal>
-        <CompanyAtAGlance />
-      </ScrollReveal>
-
       <ScrollReveal delay={0.1}>
         <div id="products">
           <ProductShowcase />
         </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <CompanyAtAGlance />
       </ScrollReveal>
 
       <ScrollReveal delay={0.1}>
