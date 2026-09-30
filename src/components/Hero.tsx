@@ -95,7 +95,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.04 }}
             animate={{ opacity: 1, scale: reduceMotion ? 1 : 1.08 }}
             exit={{ opacity: 0 }}
-            transition={{ opacity: { duration: 0.8 }, scale: { duration: 7.5, ease: "linear" } }}
+            transition={{ opacity: { duration: 1.4 }, scale: { duration: 7.5, ease: "linear" } }}
           />
         )}
       </AnimatePresence>
